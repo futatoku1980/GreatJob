@@ -10,7 +10,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       #追加カラム
       t.string :first_name, null: false
       t.string :last_name, null: false
-      t.string :enployee_code, null: false
 
 
       ## Recoverable

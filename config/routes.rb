@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'attendances/new'
+  get 'attendances/index'
+  root to: 'homes#top'
   #管理者
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
