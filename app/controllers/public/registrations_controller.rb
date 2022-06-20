@@ -50,6 +50,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [:enployee_code])
   end
 
+  def after_sign_in_path_for(resource)
+    public_attendances_new_path # ログイン後に遷移するpathを設定
+  end
+
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)
