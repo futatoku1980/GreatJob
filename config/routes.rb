@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'attendances/index'
+  end
+  namespace :public do
+    get 'attendances/new'
+    get 'attendances/index'
+  end
   get 'attendances/new'
   get 'attendances/index'
   root to: 'homes#top'
