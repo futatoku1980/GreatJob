@@ -1,9 +1,9 @@
 <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: user_session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :enployee_code %><br />
-    <%= f.text_field :enployee_code, autocomplete: "enployee_code" %>
+   <%= f.label :user_id %><br />
+   <%= f.text_field :user_id, autofocus: true, autocomplete: "user_id" %>
   </div>
 
   <div class="field">
@@ -22,5 +22,7 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+
+<%= link_to 'ログアウト', destroy_user_session_path,class: 'dropdown-item',method: :delete %>
 
 <%= render "public/shared/links" %>
