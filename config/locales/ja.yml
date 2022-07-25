@@ -1,0 +1,6 @@
+ ja:
+  enums:
+    calendar:
+      status:
+        approval: "承認"
+        nonapproval: "非承認"
