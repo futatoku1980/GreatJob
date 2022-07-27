@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   namespace :public do
-   get 'calendars/index'
-    get 'calendars/new'
+    resources :calendars, only: [:index, :create, :new, :update, :destroy]
   end
+  
    root to: 'homes#top'
   #社員
 
@@ -33,7 +33,6 @@ Rails.application.routes.draw do
    resources :attendances, only: [:index, :create, :new, :update]
   end
 
-  resources :meetings
 
 
 
