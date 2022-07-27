@@ -35,10 +35,13 @@ function nowTime() {
 setInterval('nowTime()', 1000);
 </script>
 
-<%= link_to "出勤",　public_attendances_path  %>
-<%= link_to "退勤",　public_attendances_path(type: "leaving_work"), method: :patch %>
-<%= link_to "休憩開始",　public_attendances_path(type: "start_lest"), method: :patch %>
-<%= link_to "休憩終了",　public_attendances_path(type: "finish_lest"), method: :patch %>
+<div class="text-success"> <%= flash[:notice] %> </div>
+<div class="text-danger"> <%= flash[:alret] %> </div>
+
+<%= link_to "出勤", public_attendances_path, method: :post %>
+<%= link_to "退勤/日報", new_public_report_path %>
+<%= link_to "休憩開始", public_attendance_path(id: current_user.id, type: "start_lest"), method: :patch %>
+<%= link_to "休憩終了", public_attendance_path(id: current_user.id, type: "finish_lest"), method: :patch %>
 
 
 

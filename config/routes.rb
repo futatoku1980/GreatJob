@@ -24,8 +24,7 @@ Rails.application.routes.draw do
     get 'reports/show'
   end
   namespace :public do
-    get 'reports/new'
-    get 'reports/index'
+    resources :reports, only: [:index, :create, :new, :update, :show]
   end
   namespace :admin do
     get 'attendances/index'

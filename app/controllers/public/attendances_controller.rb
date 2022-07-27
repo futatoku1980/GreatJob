@@ -7,21 +7,17 @@ class Public::AttendancesController < ApplicationController
 
 
   def create
-    at = current_user.attendances.last
-    if (at.go_work != nil) && (at.leaving_work == nil)
-      redirect_to root_path, alert: "出勤できません"
+     #at = current_user.attendances.last
+
+     at = current_user.attendances.last
+    if !at.nil? && at.go_work != nil && at.leaving_work == nil
+      flash[:alret] = "出勤している。または退勤していません"
+      redirect_to new_public_attendance_path, notice
     else
       current_user.attendances.create!(go_work: DateTime.now)
-      redirect_to public_attendances_path
+      flash[:notice] = "出勤しました"
+      redirect_to new_public_attendance_path
     end
-
-    # if restrict_create_button == true
-      # @attendance = Atendance.new(go_work: DateTime.now)
-      # @attendance.user_id = current_user.id
-      # @attendance.save
-
-    # end
-    #redirect_to root_path
 
 
   end
@@ -32,19 +28,37 @@ class Public::AttendancesController < ApplicationController
 
   def update
     at = current_user.attendances.last
-    if params[:type] == "leaving_work"
-      at.update!(leaving_work: DateTime.now)
-      redirect_to public_reports_new_path
-
-
-    #else params[:type] == "go_work" && params[:type] !=="leaving_work"
+    pp at ,at.nil? , at.go_work.nil? , !at.leaving_work.nil?
+    if at.nil? || at.go_work.nil? || !at.leaving_work.nil?
+      return
     end
+    
+    if params[:type] == "leaving_work" && (at.start_lest.nil? || !at.finish_lest.nil?)
+      at = current_user.attendances.last
+      at.update!(leaving_work: DateTime.now)
+      flash[:notice] = "退勤しました"
+      redirect_to new_public_attendance_path
+
+    elsif params[:type] == "start_lest" && at.start_lest.nil?
+      at.update!(start_lest: DateTime.now)
+      flash[:notice] = "休憩開始"
+      redirect_to new_public_attendance_path
+
+    elsif params[:type] == "finish_lest" && !at.start_lest.nil? && at.finish_lest.nil?
+      at.update!(finish_lest: DateTime.now)
+      flash[:notice] = "休憩終了"
+      redirect_to new_public_attendance_path
+
+    end
+
+     
   end
 
 
 
 
   def index
+   @attendances = Attendance.all
   end
 
   private
