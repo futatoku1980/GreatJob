@@ -5,30 +5,48 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
-
+  
   <body>
-<header>
-    <h1>Great Job</h1>
-
-    <nav>
-      <ul>
+    <header class="shadow-lg bg-danger">
+      <nav class="navbar">
+      <div class="container">
+        <ul class="nav nav-tabs">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "カレンダー", public_calendars_path, class:"nav-link mx-2 text-white" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "勤怠一覧",  public_attendances_path, class:"nav-link mx-2 text-white" %>
+            
+            </li>
+            <li class="nav-item">
+              <%= link_to "日報一覧",  public_reports_path, class:"nav-link mx-2 text-white" %>
         
-          <li><%= link_to "カレンダー",public_calendars_path %></li>
-        
-          <li><%= link_to "勤怠一覧",public_attendances_path %></li>
-        
-          <li><%= link_to "日報一覧",public_reports_path %></li>
-          
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete  %></li>
-        
-      </ul>
-    </nav>
-  </header>
-    <%= yield %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト",  destroy_user_session_path, method: :delete, class:"nav-link text-white"  %>
+              
+            </li>
+            
+          <% elsif admin_signed_in? %>
+            
+            <li class="nav-item">
+              <%= link_to "日報一覧", admin_reports_index_path, class:"nav-link text-white" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"nav-link text-white"  %>
+            </li>
+          <% end %> 
+        </ul>
+        </nav>
+    </header>
+      <main class="xl-auto lg-auto md-auto">
+          <%= yield %>
+        </div>
+      </main>
   </body>
 </html>
+ 
