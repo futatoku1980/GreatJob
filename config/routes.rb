@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   #社員
 
   devise_for :users, skip: [:passwords], controllers: {
-
   registrations: "public/registrations",
   sessions: "public/sessions"
   }
