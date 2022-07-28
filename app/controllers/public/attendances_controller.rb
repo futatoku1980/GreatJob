@@ -37,7 +37,7 @@ class Public::AttendancesController < ApplicationController
       at = current_user.attendances.last
       at.update!(leaving_work: DateTime.now)
       flash[:notice] = "退勤しました"
-      redirect_to new_public_attendance_path
+      redirect_to root_path
 
     elsif params[:type] == "start_lest" && at.start_lest.nil?
       at.update!(start_lest: DateTime.now)

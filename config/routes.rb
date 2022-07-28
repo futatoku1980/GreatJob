@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :public do
+    root to: 'calendars#index'
+    resources :calendars
+  end
+  namespace :public do
     resources :calendars, only: [:index, :create, :new, :update, :destroy]
   end
   

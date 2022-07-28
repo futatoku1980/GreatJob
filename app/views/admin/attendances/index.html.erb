@@ -1,2 +1,31 @@
-<h1>Admin::Attendances#index</h1>
-<p>Find me in app/views/admin/attendances/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h5 class="my-3"></h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>社員名</th>
+            <th>出勤時間</th>
+            <th>休憩開始時間</th>
+            <th>休憩終了時間</th>
+            <th>退勤時間</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @attendances.each do |attendance| %>
+            <tr>
+              <td><%= attendance.user.last_name + attendance.user.first_name %></td>
+              <td><%= attendance.go_work ? I18n.l(attendance.go_work) : "" %></td>
+              <td><%= attendance.start_lest ? I18n.l(attendance.start_lest) : "" %>
+              <td><%= attendance.finish_lest ? I18n.l(attendance.finish_lest) : ""%></td>
+              <td><%= attendance.leaving_work ? I18n.l(attendance.leaving_work) : ""%></td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</div>

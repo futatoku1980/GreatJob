@@ -5,7 +5,7 @@
              url: session_path(resource_name),
              html: { class: "form-signin", role: "form" }) do |f| %>
   <h2 class="form-signin-heading">
-    サインイン
+    ログイン
   </h2>
 
   <%= f.text_field :enployee_code,
@@ -17,8 +17,8 @@
     class: "form-control",
     placeholder: "パスワード" %>
 
-  <%= f.submit "サインイン",
-    data: { disable_with: "サインイン中..." },
+  <%= f.submit "ログイン",
+    data: { disable_with: "ログイン中..." },
     class: "btn btn-lg btn-primary btn-block" %>
 <% end %>
 
