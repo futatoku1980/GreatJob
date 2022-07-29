@@ -4,7 +4,7 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
   authentication_keys: [:enployee_code]
-
+  exclude_fields :emai
   validates :enployee_code, uniqueness: true
   
   def email_required?

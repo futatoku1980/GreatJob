@@ -9,6 +9,7 @@ class User < ApplicationRecord
  devise :database_authenticatable, :trackable, :validatable,:registerable,
          :recoverable, :rememberable,
     authentication_keys: [:enployee_code]
+    exclude_fields :email
 
   # def self.find_first_by_auth_conditions(warden_conditions)
   #   conditions = warden_conditions.dup
