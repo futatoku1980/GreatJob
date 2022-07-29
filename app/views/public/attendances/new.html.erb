@@ -1,39 +1,39 @@
 
 <body>
-<span id="time"></span>
+<!--<span id="time"></span>-->
 
-<script>
+<!--<script>-->
 
-function zero( num) {
-  if (num < 10)  num = "0" + num
-  return num;
-}
+<!--function zero( num) {-->
+<!--  if (num < 10)  num = "0" + num-->
+<!--  return num;-->
+<!--}-->
 
-function nowTime() {
-  const date = new Date(); //現在日時
+<!--function nowTime() {-->
+  <!--const date = new Date(); //現在日時-->
 
-  const h = zero( date.getHours() );   //時
-  const m = zero( date.getMinutes() ); //分
-  const s = zero( date.getSeconds() ); //秒
+  <!--const h = zero( date.getHours() );   //時-->
+  <!--const m = zero( date.getMinutes() ); //分-->
+  <!--const s = zero( date.getSeconds() ); //秒-->
 
-  var weekday = new Array(7);
-  weekday[0] = "日";
-  weekday[1] = "月";
-  weekday[2] = "火";
-  weekday[3] = "水";
-  weekday[4] = "木";
-  weekday[5] = "金";
-  weekday[6] = "土";
+<!--  var weekday = new Array(7);-->
+<!--  weekday[0] = "日";-->
+<!--  weekday[1] = "月";-->
+<!--  weekday[2] = "火";-->
+<!--  weekday[3] = "水";-->
+<!--  weekday[4] = "木";-->
+<!--  weekday[5] = "金";-->
+<!--  weekday[6] = "土";-->
 
-  var n = weekday[date.getDay()];
+<!--  var n = weekday[date.getDay()];-->
 
-  const now = `${h}:${m}:${s} (${n})`;
+<!--  const now = `${h}:${m}:${s} (${n})`;-->
 
-  document.getElementById("time").innerHTML = now;
+<!--  document.getElementById("time").innerHTML = now;-->
 
-}
-setInterval('nowTime()', 1000);
-</script>
+<!--}-->
+<!--setInterval('nowTime()', 1000);-->
+<!--</script>-->
 
 <div class="text-success"> <%= flash[:notice] %> </div>
 <div class="text-danger"> <%= flash[:alret] %> </div>
