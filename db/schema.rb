@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_28_031047) do
+ActiveRecord::Schema.define(version: 2022_07_29_091648) do
 
   create_table "admins", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
@@ -50,6 +50,11 @@ ActiveRecord::Schema.define(version: 2022_07_28_031047) do
     t.text "summary", null: false
     t.text "introspection", null: false
     t.text "improvement", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tests", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
