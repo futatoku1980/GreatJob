@@ -1,14 +1,7 @@
 Rails.application.routes.draw do
-  namespace :public do
-    root to: 'calendars#index'
-    resources :calendars
-  end
-  namespace :public do
-    resources :calendars, only: [:index, :create, :new, :update, :destroy]
-  end
+ 
   
    root to: 'homes#top'
-  #社員
 
   devise_for :users, skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -20,7 +13,19 @@ Rails.application.routes.draw do
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
   }
-
+  
+  namespace :admin do
+    get 'attendances/index'
+  end
+  namespace :public do
+   resources :attendances, only: [:index, :create, :new, :update]
+  end
+  
+  
+  
+  namespace :public do
+    resources :calendars, only: [:index, :create, :new, :update, :destroy]
+  end
 
   namespace :admin do
     get 'reports/index'
@@ -29,12 +34,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :reports, only: [:index, :create, :new, :update, :show]
   end
-  namespace :admin do
-    get 'attendances/index'
-  end
-  namespace :public do
-   resources :attendances, only: [:index, :create, :new, :update]
-  end
+  
 
 
 

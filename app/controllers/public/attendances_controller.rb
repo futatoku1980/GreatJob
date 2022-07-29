@@ -59,6 +59,7 @@ class Public::AttendancesController < ApplicationController
 
   def index
    @attendances = Attendance.all
+
   end
 
   private
