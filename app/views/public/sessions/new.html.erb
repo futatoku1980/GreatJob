@@ -2,7 +2,7 @@
 
 <%= form_for(resource,
              as: resource_name,
-             url: session_path(resource_name),
+             url: admin_session_path(resource_name),
              html: { class: "form-signin", role: "form" }) do |f| %>
   <h2 class="form-signin-heading">
     ログイン
