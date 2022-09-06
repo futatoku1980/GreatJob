@@ -1,48 +1,20 @@
-
-<body>
-<!--<span id="time"></span>-->
-
-<!--<script>-->
-
-<!--function zero( num) {-->
-<!--  if (num < 10)  num = "0" + num-->
-<!--  return num;-->
-<!--}-->
-
-<!--function nowTime() {-->
-  <!--const date = new Date(); //現在日時-->
-
-  <!--const h = zero( date.getHours() );   //時-->
-  <!--const m = zero( date.getMinutes() ); //分-->
-  <!--const s = zero( date.getSeconds() ); //秒-->
-
-<!--  var weekday = new Array(7);-->
-<!--  weekday[0] = "日";-->
-<!--  weekday[1] = "月";-->
-<!--  weekday[2] = "火";-->
-<!--  weekday[3] = "水";-->
-<!--  weekday[4] = "木";-->
-<!--  weekday[5] = "金";-->
-<!--  weekday[6] = "土";-->
-
-<!--  var n = weekday[date.getDay()];-->
-
-<!--  const now = `${h}:${m}:${s} (${n})`;-->
-
-<!--  document.getElementById("time").innerHTML = now;-->
-
-<!--}-->
-<!--setInterval('nowTime()', 1000);-->
-<!--</script>-->
-
-<div class="text-success"> <%= flash[:notice] %> </div>
-<div class="text-danger"> <%= flash[:alret] %> </div>
-
-<%= link_to "出勤", public_attendances_path, method: :post %>
-<%= link_to "退勤/日報", new_public_report_path %>
-<%= link_to "休憩開始", public_attendance_path(id: current_user.id, type: "start_lest"), method: :patch %>
-<%= link_to "休憩終了", public_attendance_path(id: current_user.id, type: "finish_lest"), method: :patch %>
-
-
-
-</body>
+<div class="container">
+  <div class="row">
+  
+    <div class="text-success"> <%= flash[:notice] %> </div>
+    <div class="text-danger"> <%= flash[:alret] %> </div>
+  <div class="col">
+    <%= link_to "出勤", public_attendances_path, method: :post %>
+  </div>
+  <div class="col">
+    <%= link_to "退勤/日報", new_public_report_path %>
+  </div>
+  <div class="w-100"></div>
+  <div class="col">
+    <%= link_to "休憩開始", public_attendance_path(id: current_user.id, type: "start_lest"), method: :patch %>
+  </div>
+  <div class="col">
+    <%= link_to "休憩終了", public_attendance_path(id: current_user.id, type: "finish_lest"), method: :patch %>
+   </div>
+  </div>
+</div>

@@ -2,25 +2,25 @@
   <span class="display-1">Great Job</span>
 </div>
 
-<%= user_signed_in? %>
+<%#= user_signed_in? %>
 
 
 <div class="row">
   <div class="mx-auto m-5 col-3">
-      <%= link_to new_user_registration_path, class:"btn btn-info btn-sm btn-block mb-5 sign_up" do %>
+      <%= link_to new_user_registration_path, class:"btn btn-info btn-md btn-block mb-5 sign_up" do %>
           <span><i class="fas fa-sign-up-alt"></i> 新規登録 </span>
       <% end %>
       
-      <%= link_to destroy_user_session_path, class:"btn btn-info btn-sm btn-block mb-3 sign_out",method: :delete do %>
+      <%= link_to destroy_user_session_path, class:"btn btn-info btn-md btn-block mb-5 sign_out",method: :delete do %>
           <span><i class="fas fa-sign-in-alt"></i> ログアウト </span>
       <% end %>
       
 
-      <%= link_to new_user_session_path, class:"btn btn-info btn-sm btn-block mb-3 sign_in" do %>
+      <%= link_to new_user_session_path, class:"btn btn-info btn-md btn-block mb-5 sign_in" do %>
           <span><i class="fas fa-sign-in-alt"></i> ログイン </span>
       <% end %>
       
-      <%= link_to new_admin_session_path, class:"btn btn-info btn-sm btn-block mb-3 sign_in" do %>
+      <%= link_to new_admin_session_path, class:"btn btn-info btn-md btn-block mb-5 sign_in" do %>
           <span><i class="fas fa-sign-in-alt"></i> 管理者ログイン </span>
       <% end %>
       
