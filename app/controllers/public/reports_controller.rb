@@ -22,6 +22,7 @@ class Public::ReportsController < ApplicationController
 
   def index
     @reports = Report.all
+    @reports = current_user.reports
   end
   
   def show
