@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-4 mb-3">
     <div class="mx-auto col-12">
-      <%= notice %>
+      <p class="text-primary h3"><%= notice %></p>
       <h2 class="d-flex align-items-center justify-content-center">業務日報</h2>
     </div>
   </div>
@@ -26,9 +26,11 @@
           <td class="col-10"><%= f.text_area :improvement, class:"form-control", rows: 5 %></td>
         </tr>
       </table>
-      <%= f.submit "保存", class:"btn btn-info col-3" %>
+      <%= f.submit "保存", class:"btn btn-info col-3 m-1" %>
       <% end %>
-      <%= link_to "退勤", public_attendance_path(id: current_user.id, type: "leaving_work"),class:"btn btn-info col-3",  method: :patch %>
+      
+      <%= link_to "退勤", public_attendance_path(id: current_user.id, type: "leaving_work"),class:"btn btn-info col-3 m-1",  method: :patch %>
+    
     </div>
   </div>
 </div>
