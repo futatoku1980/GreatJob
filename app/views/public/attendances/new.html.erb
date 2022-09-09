@@ -1,22 +1,21 @@
 <div class="container text-center">
-<div class="text-success h2"> <%= flash[:notice] %> </div>
-<div class="text-danger"> <%= flash[:alret] %> </div>
+  <div class="text-success h2"> <%= flash[:notice] %> </div>
+  <div class="text-danger"> <%= flash[:alret] %> </div>
 </div>
+
 <div class="row my-5">
-  <div class="col-2">
-  </div>
-  <div class="col-5 pl-5">
-    <h2 class="bg-light d-flex align-items-center justify-content-center w-50">打刻</h2>
-  </div>
-  <div class="col-5">
-  </div>
+  <div class="col-2"></div>
+    <div class="col-5 pl-5">
+      <h2 class="bg-light d-flex align-items-center justify-content-center w-50">打刻</h2>
+    </div>
+      <div class="col-5"></div>
 </div>
 <div class="container">
   <div class="d-flex align-items-center justify-content-center" style="height:400px;">
-      <%= link_to "出勤開始", public_attendances_path, method: :post, class:'btn btn-primary btn-lg w-25 h-25 mr-4'%>
-      <%= link_to "休憩開始", public_attendance_path(id: current_user.id, type: "start_lest"), method: :patch, class:'btn btn-success btn-lg w-25 h-25 mr-4' %>
-      <%= link_to "休憩終了", public_attendance_path(id: current_user.id, type: "finish_lest"), method: :patch, class:'btn btn-success btn-lg w-25 h-25 mr-4' %>
-      <%= link_to "退勤/日報", new_public_report_path, class:'btn btn-primary btn-lg w-25 h-25 mr-4' %>
+    <%= link_to "出勤開始", public_attendances_path, method: :post, class:'btn btn-primary btn-lg w-25 h-25 mr-4'%>
+    <%= link_to "休憩開始", public_attendance_path(id: current_user.id, type: "start_lest"), method: :patch, class:'btn btn-success btn-lg w-25 h-25 mr-4' %>
+    <%= link_to "休憩終了", public_attendance_path(id: current_user.id, type: "finish_lest"), method: :patch, class:'btn btn-success btn-lg w-25 h-25 mr-4' %>
+    <%= link_to "退勤/日報", new_public_report_path, class:'btn btn-primary btn-lg w-25 h-25 mr-4' %>
   </div>
 </div>
 

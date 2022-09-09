@@ -6,6 +6,7 @@
       </h4>
     </div>
   </div>
+  
   <table class="table table-bordered">
     <thead class="bg-light">
       <tr>
@@ -13,17 +14,17 @@
         <th>日報詳細</th>
       </tr>
     </thead>
-    <tbody>
-      <% @reports.each do |report| %>
-        <tr>
-          <td class="px-3"><p><%= report.created_at.strftime('%Y/%m/%d') %></p></td>
-          <td class="px-3"><p><%= link_to "表示する", public_report_path(report.id), class:'btn btn-primary text-nowrap' %></p></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+      <tbody>
+        <% @reports.each do |report| %>
+          <tr>
+            <td class="px-3"><p><%= report.created_at.strftime('%Y/%m/%d') %></p></td>
+            <td class="px-3"><p><%= link_to "表示する", public_report_path(report.id), class:'btn btn-primary text-nowrap' %></p></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
 
 <div class="container text-center">
-    <%= link_to "打刻画面", new_public_attendance_path, class:'h3' %>に戻る。
+  <%= link_to "打刻画面", new_public_attendance_path, class:'h3' %>に戻る。
 </div>

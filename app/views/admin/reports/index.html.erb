@@ -1,24 +1,28 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h5 class="my-3"></h5>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>社員名</th>
-            <th>更新日</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @reports.each do |report| %>
-            <tr>
-              <td><%= report.user.last_name + report.user.first_name %></td>
-              <td><%= report.created_at.strftime('%Y/%m/%d') %></td>
-            <% end %>
-        </tbody>
-      </table>
+<div class="container my-5">
+  <div class="row my-3">
+    <div class="col-md-auto bg-light">
+      <h4 class="font-weight-bold">
+        日報一覧
+      </h4>
     </div>
   </div>
   
+  <table class="table table-bordered">
+    <thead class="bg-light">
+      <tr>
+        <th>社員名</th>
+        <th>更新日</th>
+        <th>日報詳細</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @reports.each do |report| %>
+          <tr>
+            <td><%= report.user.first_name + report.user.last_name %></td>
+            <td class="px-3"><p><%= report.created_at.strftime('%Y/%m/%d') %></p></td>
+            <td class="px-3"><p><%= link_to "表示する", public_report_path(report.id), class:'btn btn-primary text-nowrap' %></p></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
