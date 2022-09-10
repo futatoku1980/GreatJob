@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
- 
-  
+
+
    root to: 'homes#top'
 
   devise_for :users, skip: [:passwords], controllers: {
@@ -13,18 +13,18 @@ Rails.application.routes.draw do
   devise_for :admins,skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
   }
-  
+
   namespace :admin do
     get 'attendances/index'
   end
   namespace :public do
    resources :attendances, only: [:index, :create, :new, :update]
   end
-  
-  
-  
+
+
+
   namespace :public do
-    resources :calendars, only: [:index, :create, :new, :update, :destroy]
+    resources :calendars, only: [:index, :create, :new, :update, :edit, :show, :destroy]
   end
 
   namespace :admin do
@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :reports, only: [:index, :create, :new, :update, :show]
   end
-  
+
 
 
 

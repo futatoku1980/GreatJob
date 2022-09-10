@@ -1,33 +1,23 @@
-<div class="row mt-4 mb-3">
-  <div class="mx-auto col-12">
-    <p class="text-primary h3"><%= notice %></p>
-    <h2 class="d-flex align-items-center justify-content-center">有給申請</h2>
+<%= form_with url:public_calendars_path do |form| %>
+
+  <div class="title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
   </div>
-</div>
 
-<div class="row">
-    <div class="btn_custom mx-auto col-8">
-      <%= form_with model: @calendar, url:public_calendars_path, local: true do |f| %>
-      <table class="table">
-        <tr>
-          <th class="col-2">申請理由</th>
-          <td class="col-10"><%= f.text_area :title, class:"form-control" %></td>
-        </tr>
-        <tr>
-          <th class="col-2">内容</th>
-          <td class="col-10"><%= f.text_area :content, class:"form-control" %></td>
-        </tr>
-        
-          <th class="col-2">日時</th>
-          <td class="col-10"><%= f.datetime_select :start_time, class:"form-control", rows: 5 %></td>
-        </tr>
-      </table>
-      <%= f.submit "保存", class:"btn btn-info col-3 m-1" %>
-      <% end %>
-    </div>
-</div>
-  
- 
+    <div class="time">
+    <%= form.label :start_time %>
+    <%= form.datetime_select :start_time %>
+  </div>
 
-  
-    
+  <div class="content">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+
+
+  <div class="submit">
+    <%= form.submit %>
+  </div>
+
+<% end %>

@@ -22,12 +22,14 @@ class Public::CalendarsController < ApplicationController
     redirect_to public_calendars_path, notice:"削除しました"
   end
 
-  
+  def edit
+    @calendar = Calendar.find(params[:id])
+  end
 
   def update
     @calendar = Calendar.find(params[:id])
     if @calendar.update(calendar_parameter)
-      redirect_to public_calendars_path, notice: "編集しました"
+      redirect_to public_calendar_path, notice: "編集しました"
     else
       render 'edit'
     end
@@ -36,6 +38,6 @@ class Public::CalendarsController < ApplicationController
   private
 
   def calendar_parameter
-    params.require(:calendar).permit(:title, :content, :start_time)
+    params.permit(:title, :content, :start_time)
   end
 end

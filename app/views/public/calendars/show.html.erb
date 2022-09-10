@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<div class="show">
 <p>
   <strong>タイトル</strong>
   <%= @calendar.title %>
-</p>
-
-<p>
-  <strong>時間</strong>
-  <%= @calendar.start_time.strftime("%Y-%m-%d %H:%M") %>
 </p>
 
 <p>
@@ -15,5 +10,13 @@
   <%= @calendar.content %>
 </p>
 
-<%= link_to 'Edit', edit_public_calendar_path(@calendar) %> |
-<%= link_to 'Back', public_calendars_path %>
+<p>
+  <strong>日時</strong>
+  <%= @calendar.start_time.strftime("%m-%d") %>
+</p>
+
+<%= link_to '編集', edit_public_calendar_path(@calendar) %>
+<%= link_to '消去',public_calendar_path(@calendar.id), method: :delete, data: { confirm: '本当に?' } %>
+<%= link_to '戻る', public_calendars_path %>
+</div>
+Copy
