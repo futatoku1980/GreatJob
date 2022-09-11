@@ -2,7 +2,7 @@ class User < ApplicationRecord
   attr_accessor :login
   has_many :attendances
   has_many :reports
-  has_many :calendar
+  has_many :calendars
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

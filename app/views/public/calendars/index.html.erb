@@ -1,39 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>カレンダー</h1>
+<h1>有給申請</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>時間</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @calendars.each do |calendar| %>
-      <tr>
-        <td><%= calendar.title %></td>
-        <td><%= calendar.start_time.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= link_to 'Show', public_calendar_path %></td>
-        <td><%= link_to 'Edit', edit_public_calendar_path(calendar.id) %></td>
-        <td><%= link_to 'Destroy',public_calendar_path(calendar.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+<%= link_to '有給申請する', new_public_calendar_path %>
 
-<%= link_to '有給申請をする', new_public_calendar_path %>
 
-<%= month_calendar events: @calendars do |date, calendars| %>
+<%= month_calendar events: @calendars do |date, events| %>
   <%= date.day %>
-
-  <% calendars.each do |calendar| %>
+  <% events.each do |event| %>
     <div>
-      <%= link_to calendar.title, calendar %>
+      <%= event.title %>
+      
     </div>
   <% end %>
 <% end %>
+
+

@@ -1,4 +1,5 @@
 class Public::CalendarsController < ApplicationController
+
   def index
     @calendars = Calendar.all
   end
@@ -7,13 +8,14 @@ class Public::CalendarsController < ApplicationController
     @calendar = Calendar.new
   end
 
-  def show
-    @calendar = Calendar.find(params[:id])
-  end
-
   def create
-    Calendar.create(calendar_parameter)
-    redirect_to public_calendars_path
+    @calendar = Calendar.new(calendar_params)
+    @calendar.user_id = current_user.id
+    @calendar.save
+    redirect_to public_calendars_path,notice: "保存しました"
+  end
+  
+  def show
   end
 
   def destroy
@@ -22,22 +24,11 @@ class Public::CalendarsController < ApplicationController
     redirect_to public_calendars_path, notice:"削除しました"
   end
 
-  def edit
-    @calendar = Calendar.find(params[:id])
-  end
-
-  def update
-    @calendar = Calendar.find(params[:id])
-    if @calendar.update(calendar_parameter)
-      redirect_to public_calendar_path, notice: "編集しました"
-    else
-      render 'edit'
-    end
-  end
 
   private
 
-  def calendar_parameter
-    params.permit(:title, :content, :start_time)
+  def calendar_params
+    params.require(:calendar).permit(:user_id, :title, :content, :start_time)
   end
+
 end
