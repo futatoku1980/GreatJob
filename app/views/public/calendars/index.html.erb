@@ -1,11 +1,22 @@
+
 <p id="notice"><%= notice %></p>
+<div class="container">
+<div class="row my-3">
+  <div class="col-md-auto bg-light">
+    <h2 class="font-weight-bold">
+      勤怠一覧
+    </h2>
+  </div>
+</div>
 
-<h1>有給申請</h1>
-
-
-
-<%= link_to '有給申請する', new_public_calendar_path %>
-
+  <table>
+      <% @calendars.each do |calendar| %>
+        <div><%= link_to '申請を削除する',public_calendar_path(calendar.id), method: :delete, class:"btn btn-outline-primary w-25",  data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>
+  </table>
+     <div><%= link_to '有給申請する', new_public_calendar_path, class:"btn btn-outline-primary w-25 mt-3" %></div>
+</div>
 
 <%= month_calendar events: @calendars do |date, events| %>
   <%= date.day %>
