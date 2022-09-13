@@ -1,0 +1,28 @@
+<div class="container my-5">
+  <div class="row my-3">
+    <div class="col-md-auto bg-light">
+      <h4 class="font-weight-bold">
+        有給取得待ち一覧
+      </h4>
+    </div>
+  </div>
+  
+  <table class="table table-bordered">
+    <thead class="bg-light">
+      <tr>
+        <th>社員名</th>
+        <th>更新日</th>
+        <th>認可待ち</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @calendars.each do |calendar| %>
+          <tr>
+            <td><%= calendar.user.first_name + calendar.user.last_name %></td>
+            <td class="px-3"><p><%= calendar.created_at.strftime('%Y/%m/%d') %></p></td>
+            <td class="px-3"><p><%= link_to "表示する", admin_calendar_path(calendar.id), class:'btn btn-primary text-nowrap' %></p></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

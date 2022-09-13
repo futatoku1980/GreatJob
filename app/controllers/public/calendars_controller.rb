@@ -2,6 +2,7 @@ class Public::CalendarsController < ApplicationController
 
   def index
     @calendars = Calendar.all
+    @calendars = current_user.calendars
   end
 
   def new
@@ -16,8 +17,9 @@ class Public::CalendarsController < ApplicationController
   end
   
   def show
+    @calendar = Calendar.find(params[:id])
   end
-
+  
   def destroy
     @calendar = Calendar.find(params[:id])
     @calendar.destroy
@@ -28,7 +30,7 @@ class Public::CalendarsController < ApplicationController
   private
 
   def calendar_params
-    params.require(:calendar).permit(:user_id, :title, :content, :start_time)
+    params.require(:calendar).permit(:user_id, :title, :content, :start_time, :sta)
   end
 
 end

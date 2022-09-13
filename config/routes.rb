@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :calendars, only: [:index, :show, :update]
+  end
+
+  namespace :admin do
     get 'reports/index'
     get 'reports/show'
   end

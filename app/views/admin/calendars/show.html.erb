@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-3"></div>
+    <div class="col-5">
+    <h2 class="my-4">有給申請詳細</h2>
+        <table class="table my-4">
+          <tr>
+            <th>理由</th>
+            <td><%= @calendars.title %></td>
+          </tr>
+          <tr>
+            <th>内容</th>
+            <td><%= @calendars.content %></td>
+          </tr>
+          <tr>
+            <th>日時</th>
+            <td><%= @calendars.start_time.strftime("%m-%d") %></td>
+          </tr>
+          
+        </table>
+  
+  </div>
+  <div class="col-3"></div>
+　</div>
+　<div class="row">
+　<%= form_with model: @calendar, url: admin_calendar_path do |f| %>
+　<%= f.radio_button :status, Calendar.statuses.key(0) %>
+  <%= f.label :status, Calendar.statuses_i18n[:permission] %>
+  
+  <%= f.radio_button :status, Calendar.statuses.key(1) %>
+  <%= f.label :status, Calendar.statuses_i18n[:notpermission]%>
+  <% end %>
+  </div>

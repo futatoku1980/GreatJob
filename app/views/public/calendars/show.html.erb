@@ -1,22 +1,30 @@
+
 <p id="notice"><%= notice %></p>
-<div class="show">
-<p>
-  <strong>タイトル</strong>
-  <%= @calendar.title %>
-</p>
 
-<p>
-  <strong>内容</strong>
-  <%= @calendar.content %>
-</p>
+<div class="row">
+  <div class="col-3"></div>
+    <div class="col-5">
+    <h2 class="my-4">有給申請詳細</h2>
+        <table class="table my-4">
+          <tr>
+            <th>理由</th>
+            <td><%= @calendar.title %></td>
+          </tr>
+          <tr>
+            <th>内容</th>
+            <td><%= @calendar.content %></td>
+          </tr>
+          <tr>
+            <th>日時</th>
+            <td><%= @calendar.start_time.strftime("%m-%d") %></td>
+          </tr>
+          
+        </table>
+        <%= link_to '消去',public_calendar_path(@calendar.id), method: :delete, class:"btn btn-outline-primary my-3 ml-4 col-4",  data: { confirm: '本当に?' } %>
+        <%= link_to '戻る', public_calendars_path, class:"btn btn-outline-primary my-3 ml-4 col-4" %>
+  </div>
+  <div class="col-3"></div>
+　</div>
+　
 
-<p>
-  <strong>日時</strong>
-  <%= @calendar.start_time.strftime("%m-%d") %>
-</p>
 
-<%= link_to '編集', edit_public_calendar_path(@calendar) %>
-<%= link_to '消去',public_calendar_path(@calendar.id), method: :delete, data: { confirm: '本当に?' } %>
-<%= link_to '戻る', public_calendars_path %>
-</div>
-Copy

@@ -205,3 +205,8 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  enums:
+   calendar:
+    status:
+      permission: "認可"
+      notpermission: "非認可"
