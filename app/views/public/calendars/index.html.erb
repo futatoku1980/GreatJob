@@ -13,12 +13,11 @@
 
   <tbody>
     <% @calendars.each do |calendar| %>
-      <tr>
         <td><%= calendar.title %></td>
-        <td><%= calendar.start_time.strftime("%Y-%m-%d") %></td>
+        <td><%= calendar.start_time.strftime("%Y年%m月%d日") %></td>
         <td><%= link_to '詳細画面',public_calendar_path(calendar.id), class:"btn btn-outline-primary my-3 ml-4 col-4"  %></td>
         <td><%= link_to '申請を削除する',public_calendar_path(calendar.id), method: :delete, class:"btn btn-outline-primary my-3 ml-4 col-4",  data: { confirm: 'Are you sure?' } %></td>
-        <td class="px-3"><p><%= calendar.status_i18n %></p></td>
+        <td><%= calendar.status_i18n %></td>
     <% end %>
   </tbody>
 </table>

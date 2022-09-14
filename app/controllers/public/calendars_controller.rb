@@ -25,12 +25,13 @@ class Public::CalendarsController < ApplicationController
     @calendar.destroy
     redirect_to public_calendars_path, notice:"削除しました"
   end
-
+  
+  
 
   private
 
   def calendar_params
-    params.require(:calendar).permit(:user_id, :title, :content, :start_time, :sta)
+    params.require(:calendar).permit(:user_id, :title, :content, :start_time)
   end
 
 end

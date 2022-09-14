@@ -21,6 +21,7 @@
   </div>
   <div class="col-3"></div>
 　</div>
+　
 　<div class="row">
 　<%= form_with model: @calendar, url: admin_calendar_path do |f| %>
 　<%= f.radio_button :status, Calendar.statuses.key(0) %>
@@ -28,5 +29,6 @@
   
   <%= f.radio_button :status, Calendar.statuses.key(1) %>
   <%= f.label :status, Calendar.statuses_i18n[:notpermission]%>
+  
   <% end %>
   </div>
