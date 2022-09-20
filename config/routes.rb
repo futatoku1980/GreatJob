@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :calendars, only: [:index, :show]
+    resources :calendars, only: [:create, :index, :show]
   end
 
   namespace :admin do

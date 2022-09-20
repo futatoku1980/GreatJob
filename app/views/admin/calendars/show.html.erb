@@ -15,20 +15,17 @@
             <th>日時</th>
             <td><%= @calendars.start_time.strftime("%m-%d") %></td>
           </tr>
-          
+
         </table>
-  
+
   </div>
   <div class="col-3"></div>
 　</div>
-　
+
 　<div class="row">
-　<%= form_with model: @calendar, url: admin_calendar_path do |f| %>
-　<%= f.radio_button :status, Calendar.statuses.key(0) %>
-  <%= f.label :status, Calendar.statuses_i18n[:permission] %>
-  
-  <%= f.radio_button :status, Calendar.statuses.key(1) %>
-  <%= f.label :status, Calendar.statuses_i18n[:notpermission]%>
-  
-  <% end %>
+<%= form_with model: @calendar, url: admin_calendar_path do |f| %>
+        <%= f.select :status, Calendar.statuses.keys.map {|k| [I18n.t("enums.calendar.status.#{k}"), k]} %>
+        <%= f.submit '更新', class: 'btn btn-success' %>
+<% end %>
+
   </div>
