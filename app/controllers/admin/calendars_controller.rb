@@ -13,9 +13,11 @@ class Admin::CalendarsController < ApplicationController
   
 
   def update
-    @calendar = Calendar.find(params[:id])
-    calendar.update(calendar_params)
-    redirect_to admin_calendar_path(calendar.id)
+    if status.update(calendar_params)
+      redirect_to admin_calendar_path, notice: "対応ステータスを更新しました"
+    else
+      render :show, alert: "対応ステータスを更新できませんでした"
+    end
   end
 
   private
@@ -24,6 +26,9 @@ class Admin::CalendarsController < ApplicationController
     params.require(:calendar).permit(:status)
   end
 
-
-
+  
+  
+  
+  
+  
 end
